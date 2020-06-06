@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "worldsc",
+  "version": "${version}",
+  "name": "World Source Control",
+  "description": "A mod that keeps your world under source control, so you can always revert back if something wrong happens!",
+  "authors": [
+    "BoogieMonster1O1"
+  ],
+  "contributors": [],
+  "contact": {
+    "homepage": "https://github.com/BoogieMonster1O1/worldsc",
+    "sources": "https://github.com/BoogieMonster1O1/worldsc"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/worldsc/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.boogiemonster1o1.worldsc.WorldSCInit"
+    ],
+    "client": [],
+    "server": []
+  },
+  "mixins": [
+    "worldsc.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0"
+  }
+}

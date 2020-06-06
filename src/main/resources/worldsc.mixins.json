@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "io.github.boogiemonster1o1.worldsc.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
