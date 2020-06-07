@@ -18,6 +18,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.spi.DateFormatProvider;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.function.BiFunction;
 
 import static net.fabricmc.api.EnvType.CLIENT;
@@ -43,10 +46,11 @@ public abstract class ServerWorldMixin extends World {
             File dotGitFile = new File(dotGitDir);
             if(dotGitFile.exists()){
                 LOG.info(".git folder exists, not reinitalizing");
-                rt.exec("cd " + worldDir + " &&" + "git add . && git commit -m \"\"");
+                rt.exec("cd " + worldDir + " &&" + "git add . && git commit -m \""+ DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now()) +"\"");
             }
             else{
-
+                LOG.info("Creating .git folder");
+                rt.exec("cd " + worldDir + " &&" + "git add . && git commit -m \"Initial Commit\"");
             }
         } catch (NullPointerException ignored) {
             LOG.info("Server seems to have stopped");
