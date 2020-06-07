@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 public class WorldSCInit implements ModInitializer {
 
-    public static Logger LOGGER = LogManager.getLogger();
+    public static Logger LOGGER = LogManager.getLogger(WorldSC.class);
 
     public static final String MOD_ID = "worldsc";
     public static final String MOD_NAME = "World Source Control";
@@ -16,7 +16,6 @@ public class WorldSCInit implements ModInitializer {
     @Override
     public void onInitialize() {
         log(Level.INFO, "Initializing");
-        //TODO: Initializer
     }
 
     public static void log(Level level, String message){

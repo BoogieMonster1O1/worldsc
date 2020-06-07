@@ -3,7 +3,9 @@
   "package": "io.github.boogiemonster1o1.worldsc.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [],
-  "client": [],
+  "client": [
+    "ServerWorldMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
