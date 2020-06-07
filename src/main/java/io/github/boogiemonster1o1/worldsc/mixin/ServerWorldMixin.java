@@ -20,7 +20,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.spi.DateFormatProvider;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.function.BiFunction;
@@ -40,9 +39,9 @@ public abstract class ServerWorldMixin extends World {
     public void gitSourceControl(CallbackInfo ci){
         Logger LOG = LogManager.getLogger(WorldSC.class);
         Runtime rt = Runtime.getRuntime();
-        String worldName;
-        String ignoreFile;
-        String worldDir = getInstance().runDirectory.toString() + separator + "saves";
+        String worldName = null;
+        String ignoreFile = null;
+        String worldDir = getInstance().runDirectory.toString() + separator + "saves" + separator;
         try{
             worldName = getInstance().getServer().getLevelName();
             worldDir += worldName + separator;
@@ -64,17 +63,15 @@ public abstract class ServerWorldMixin extends World {
                 gitignorePrint.println("# Do not remove .DS_Store if you're on a mac");
                 gitignorePrint.println();
                 gitignorePrint.println(".DS_Store");
-                gitignorePrint.flush();
                 gitignorePrint.close();
-                gitignoreWrite.flush();
                 gitignoreWrite.close();
                 LOG.info("Initializing git repository");
                 rt.exec("cd " + worldDir + " &&" + "git init && git add . && git commit -m \"Initial Commit\"");
             }
-        } catch (NullPointerException ignored) {
+        } catch (NullPointerException e) {
             LOG.info("Server seems to have stopped");
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
+            LOG.info("IOException!!!");
         }
     }
 }
